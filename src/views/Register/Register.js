@@ -41,30 +41,11 @@ class Register extends Component {
       [name]: value
     });
   }
-
-  getCode(){
-    axios({
-        method: "post",
-        url: "http://localhost:1337/api/v1/register/register-email",
-        data: {
-            email: this.state.email,
-          }
-      }).then(response => {
-        if (response.data.success === true) {
-            console.log("response",response.data);
-        //   this.props.history.push("/employee");
-        } else {
-            
-          alert(response.data.msg);
-        }
-      });
-
-  }
-
+  /* LOCALHOST  */
   // getCode(){
   //   axios({
   //       method: "post",
-  //       url: "https://feedforward.iamconsulting.co.th:53093/api/v1/register/register-email",
+  //       url: "http://localhost:1337/api/v1/register/register-email",
   //       data: {
   //           email: this.state.email,
   //         }
@@ -79,6 +60,25 @@ class Register extends Component {
   //     });
 
   // }
+
+  getCode(){
+    axios({
+        method: "post",
+        url: "http://feedforward.iamconsulting.co.th:1337/api/v1/register/register-email",
+        data: {
+            email: this.state.email,
+          }
+      }).then(response => {
+        if (response.data.success === true) {
+            console.log("response",response.data);
+        //   this.props.history.push("/employee");
+        } else {
+            
+          alert(response.data.msg);
+        }
+      });
+
+  }
   render() {
     return (
       <div className="animated fadeIn">
