@@ -69,7 +69,7 @@ class Info extends Component {
   getCode(){
     axios({
         method: "post",
-        url: "http://feedforward.iamconsulting.co.th:1337/api/v1/users/register",
+        url: "https://iamfeedme.herokuapp.com/api/v1/users/register",
         data: {
             email: this.state.email,
           }
