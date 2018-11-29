@@ -21,6 +21,7 @@ import {
   InputGroupButton
 } from "reactstrap";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 class Info extends Component {
   constructor(props) {
@@ -76,9 +77,15 @@ class Info extends Component {
       }).then(response => {
         if (response.data.success === true) {
             console.log("response",response.data);
+            toast.success("Successfully sent verification code", {
+              position: toast.POSITION.TOP_CENTER
+            });
         //   this.props.history.push("/employee");
         } else {
-          alert(response.data.msg);
+          toast.error("Cannot be able to send Verification Code", {
+            position: toast.POSITION.TOP_CENTER
+          });
+          // alert(response.data.msg);
         }
       });
 
@@ -103,7 +110,7 @@ class Info extends Component {
                     >
                       <FormGroup row>
                         <Col xs="12" sm="6">
-                          <Row>
+                          {/* <Row>
                             <Col xs="12" sm="4">
                               <Label>User ID</Label>
                             </Col>
@@ -116,7 +123,7 @@ class Info extends Component {
                                 onChange={this.handleChange}
                               />
                             </Col>
-                          </Row>
+                          </Row> */}
                           <br />
                           <Row>
                             <Col xs="12" sm="4">
@@ -169,6 +176,8 @@ class Info extends Component {
                                 value={this.state.handleChange}
                                 onChange={this.handleChange}
                               >
+
+                                <option>---Select---</option>
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
                               </Input>
@@ -187,13 +196,14 @@ class Info extends Component {
                                 value={this.state.handleChange}
                                 onChange={this.handleChange}
                               >
+                                <option>---Select---</option>
                                 <option value="employee">Employee</option>
                                 <option value="client">Client</option>
                               </Input>
                             </Col>
                           </Row>
                           <br />
-                          <Row>
+                          {/* <Row>
                             <Col xs="12" sm="4">
                               <Label>Client ID</Label>
                             </Col>
@@ -206,7 +216,7 @@ class Info extends Component {
                                 onChange={this.handleChange}
                               />
                             </Col>
-                          </Row>
+                          </Row> */}
                           <Row>
                           </Row>
                           <br />

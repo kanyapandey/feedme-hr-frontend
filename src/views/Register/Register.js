@@ -22,6 +22,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 
+import { ToastContainer, toast } from "react-toastify";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -71,10 +72,15 @@ class Register extends Component {
       }).then(response => {
         if (response.data.success === true) {
             console.log("response",response.data);
+            toast.success("Registered", {
+              position: toast.POSITION.TOP_CENTER
+            });
         //   this.props.history.push("/employee");
         } else {
-            
-          alert(response.data.msg);
+          toast.error("Wrong email", {
+            position: toast.POSITION.TOP_CENTER
+          });
+          // alert(response.data.msg);
         }
       });
 
@@ -97,12 +103,12 @@ class Register extends Component {
                       className="form-horizontal"
                     >
                       <FormGroup row>
-                        <Col xs="12" sm="6">
+                        <Col xs="12" sm="8">
                           <Row>
-                            <Col xs="12" sm="4">
+                            <Col xs="12" sm="2">
                               <Label>User Email</Label>
                             </Col>
-                            <Col xs="12" sm="8">
+                            <Col xs="12" sm="7">
                               <Input
                                 id="email"
                                 type="text"
@@ -112,8 +118,8 @@ class Register extends Component {
                               />
                               
                             </Col>
-                            <Col xs="12" sm="8">
-                             <Button color="secondary" onClick={this.getCode} className="three px-2" size="sm">Register</Button>
+                            <Col xs="12" sm="3">
+                             <Button color="secondary" onClick={this.getCode} className="three px-2" size="lg">Register</Button>
                             </Col>
                           </Row>
                           <br />

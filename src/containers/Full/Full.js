@@ -12,11 +12,26 @@ import Info from '../../views/Info/';
 import Register from '../../views/Register/';
 import Feedback from '../../views/Feedback/';
 
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 class Full extends Component {
   render() {
     return (
       <div className="app">
+      <ToastContainer 
+        position="top-left"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover/>
+       
         <Header />
+        <div>
+ 
         <div className="app-body">
           <Sidebar {...this.props}/>
           <main className="main">
@@ -34,6 +49,7 @@ class Full extends Component {
           <Aside />
         </div>
         <Footer />
+      </div>
       </div>
     );
   }
